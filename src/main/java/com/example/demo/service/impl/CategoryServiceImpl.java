@@ -21,8 +21,8 @@ public class CategoryServiceImpl implements CategoryService {
 	@Override
 	public CategoryDto createCategory(CategoryDto categoryDto) {
 		Category category = this.dtoToEntity(categoryDto);
-		categoryRepo.save(category);
-		return entityToDto(category);
+		Category category1=categoryRepo.save(category);
+		return entityToDto(category1);
 	}
 
 	@Override
@@ -30,9 +30,9 @@ public class CategoryServiceImpl implements CategoryService {
 		Category category = this.categoryRepo.findById(categoryId)
 				.orElseThrow(() -> new ResourseNotFoundException("Category", "CategoryId", categoryId));
 		category = dtoToEntity(categoryDto);
-		categoryRepo.save(category);
+		Category category1=categoryRepo.save(category);
 
-		return categoryDto;
+		return entityToDto(category1);
 	}
 
 	@Override
